@@ -70,7 +70,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TransparentClippingLimit: 0.9
+    - _TransparentClippingLimit: 0.5
     - _TransparentGradient: 0
     - _UVSec: 0
     - _UseTransparentBackground: 1
