@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 3499337634255722041}
+  AnimalType: 0
 --- !u!1 &5676847580920057611
 GameObject:
   m_ObjectHideFlags: 0

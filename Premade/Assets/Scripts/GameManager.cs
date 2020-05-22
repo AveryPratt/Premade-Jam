@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,13 +29,25 @@ public class GameManager : MonoBehaviour
             }
             return _activeAnimalController;
         }
-        set
+        private set
         {
             _activeAnimalController = value;
         }
     }
 
-    public AnimalController FoxController;
     public AnimalController WolfController;
+    public AnimalController FoxController;
     public InputManager InputManager;
+
+    public void SwitchActiveAnimalController()
+    {
+        if (ActiveAnimalController.AnimalType == AnimalType.Fox)
+        {
+            ActiveAnimalController = WolfController;
+        }
+        else if (ActiveAnimalController.AnimalType == AnimalType.Wolf)
+        {
+            ActiveAnimalController = FoxController;
+        }
+    }
 }
