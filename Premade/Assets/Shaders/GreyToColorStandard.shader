@@ -13,7 +13,8 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" }
+		Blend SrcAlpha One
         LOD 200
 
         CGPROGRAM

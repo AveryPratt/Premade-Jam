@@ -38,17 +38,17 @@ public class ColorSetter : MonoBehaviour
     }
 
     [SerializeField]
-    private bool _useTransparentBackground = true;
-    public bool UseTransparentBackground
+    private float _transparentClippingLimit = .9f;
+    public float TransparentClippingLimit
     {
         get
         {
-            return _useTransparentBackground;
+            return _transparentClippingLimit;
         }
         set
         {
-            _useTransparentBackground = value;
-            Renderer.sharedMaterial.SetFloat("_UseTransparentBackground", value ? 1 : 0);
+            _transparentClippingLimit = value;
+            Renderer.sharedMaterial.SetFloat("_TransparentClippingLimit", value);
         }
     }
 
@@ -56,14 +56,13 @@ public class ColorSetter : MonoBehaviour
     {
         Renderer.sharedMaterial.SetColor("_ForegroundColor", ForegroundColor);
         Renderer.sharedMaterial.SetColor("_BackgroundColor", BackgroundColor);
-        Renderer.sharedMaterial.SetFloat("_UseTransparentBackground", UseTransparentBackground ? 1 : 0);
-        RenderSettings.ambientLight = Color.white;
+        Renderer.sharedMaterial.SetFloat("_TransparentClippingLimit", TransparentClippingLimit);
     }
 
     private void Update()
     {
         ForegroundColor = ForegroundColor;
         BackgroundColor = BackgroundColor;
-        UseTransparentBackground = UseTransparentBackground;
+        TransparentClippingLimit = TransparentClippingLimit;
     }
 }

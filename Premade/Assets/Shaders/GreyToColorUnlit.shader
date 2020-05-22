@@ -4,13 +4,14 @@
 	{
 		_ForegroundColor("Foreground Color", Color) = (0,0,0,1)
 		_BackgroundColor("Background Color", Color) = (1,1,1,1)
-		_UseTransparentBackground("Use Transparent Background", Float) = 0
+		_TransparentClippingLimit("TransparentClippingLimit", Float) = 0.9
         _MainTex("Texture", 2D) = "white" {}
     }
     SubShader
     {
-        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
-		Blend SrcAlpha One
+		Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" }
+		//ZWrite Off
+		Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
 
         Pass
@@ -35,7 +36,7 @@
 
 			float4 _ForegroundColor;
 			float4 _BackgroundColor;
-			bool _UseTransparentBackground;
+			float _TransparentClippingLimit;
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
@@ -55,7 +56,7 @@
 
 				// lerp color
 				fixed4 col = lerp(_ForegroundColor, _BackgroundColor, grad);
-				if (_UseTransparentBackground == 1 && grad == 1)
+				if (grad >= _TransparentClippingLimit)
 				{
 					col.a = 0;
 				}
