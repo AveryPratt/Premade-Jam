@@ -23,7 +23,12 @@ public class AnimalController : MonoBehaviour
             transform.position = Vector3.Lerp(MovePoint, StartPoint, MoveTimer / .3f);
             Model.transform.position = transform.position + Vector3.up * Mathf.Sin(MoveTimer * Mathf.PI / .3f);
 
-            if (MoveAngle - FaceAngle > 180)
+            bool blocked = false;
+            if (Vector3.SqrMagnitude(MovePoint - StartPoint) == 0)
+            {
+                blocked = true;
+            }
+            else if (MoveAngle - FaceAngle > 180)
             {
                 MoveAngle -= 360;
             }
@@ -31,8 +36,10 @@ public class AnimalController : MonoBehaviour
             {
                 FaceAngle -= 360;
             }
+
+            float alteredFaceAngle = blocked ? FaceAngle + (Random.value - .5f > 0 ? 360 : -360) : FaceAngle;
             
-            Model.transform.rotation = Quaternion.Euler(30 * (1 - MoveTimer / .3f) - 15, Mathf.Lerp(MoveAngle, FaceAngle, MoveTimer / .3f), Model.transform.rotation.z);
+            Model.transform.rotation = Quaternion.Euler(30 * (1 - MoveTimer / .3f) - 15, Mathf.Lerp(MoveAngle, alteredFaceAngle, MoveTimer / .3f), Model.transform.rotation.z);
 
             if (MoveTimer <= 0)
             {
@@ -45,36 +52,56 @@ public class AnimalController : MonoBehaviour
         }
     }
 
-    public void MoveNorth()
+    public void TryMoveNorth()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.forward * 2;
         MoveAngle = 0;
-        IsMoving = true;
+
+        VerifyMovement();
     }
 
-    public void MoveSouth()
+    public void TryMoveSouth()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.back * 2;
         MoveAngle = 180;
-        IsMoving = true;
+
+        VerifyMovement();
     }
 
-    public void MoveWest()
+    public void TryMoveWest()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.left * 2;
         MoveAngle = 270;
-        IsMoving = true;
+
+        VerifyMovement();
     }
 
-    public void MoveEast()
+    public void TryMoveEast()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.right * 2;
         MoveAngle = 90;
+
+        VerifyMovement();
+    }
+
+    private void VerifyMovement()
+    {
+        Ray ray = new Ray(StartPoint + Vector3.up * .5f, MovePoint - StartPoint);
+        if (Physics.Raycast(ray, 2))
+        {
+            MovePoint = StartPoint;
+        }
         IsMoving = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(StartPoint + Vector3.up * .5f, MovePoint + Vector3.up * .5f);
     }
 }
 

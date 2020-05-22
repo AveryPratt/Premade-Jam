@@ -26,18 +26,21 @@ public class GameManager : MonoBehaviour
             if (_activeAnimalController == null)
             {
                 _activeAnimalController = WolfController;
+                CameraFollow.Target = _activeAnimalController.gameObject;
             }
             return _activeAnimalController;
         }
         private set
         {
             _activeAnimalController = value;
+            CameraFollow.Target = _activeAnimalController.gameObject;
         }
     }
 
     public AnimalController WolfController;
     public AnimalController FoxController;
     public InputManager InputManager;
+    public CameraFollow CameraFollow;
 
     public void SwitchActiveAnimalController()
     {
@@ -49,5 +52,10 @@ public class GameManager : MonoBehaviour
         {
             ActiveAnimalController = FoxController;
         }
+    }
+
+    private void Start()
+    {
+        ActiveAnimalController = WolfController;
     }
 }

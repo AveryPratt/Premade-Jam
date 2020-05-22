@@ -75,16 +75,16 @@ public class InputManager : MonoBehaviour
             switch (latestInput)
             {
                 case Directions.North:
-                    activeAnimalController.MoveNorth();
+                    activeAnimalController.TryMoveNorth();
                     break;
                 case Directions.South:
-                    activeAnimalController.MoveSouth();
+                    activeAnimalController.TryMoveSouth();
                     break;
                 case Directions.West:
-                    activeAnimalController.MoveWest();
+                    activeAnimalController.TryMoveWest();
                     break;
                 case Directions.East:
-                    activeAnimalController.MoveEast();
+                    activeAnimalController.TryMoveEast();
                     break;
                 default:
                     break;
