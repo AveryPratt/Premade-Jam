@@ -5,12 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class Trigger : MonoBehaviour
 {
+    public bool ActivatedOnce { get; set; }
+    public bool Activated { get; set; }
+
     private void OnTriggerEnter(Collider other)
     {
-        Activator activator = other.GetComponent<Activator>();
-        if (activator != null)
+        Activator[] activators = other.GetComponents<Activator>();
+        if (activators != null && activators.Length > 0)
         {
-            Activate(activator);
+            foreach (Activator activator in activators)
+            {
+                if (Activate(activator))
+                {
+                    Activated = true;
+                    ActivatedOnce = true;
+                }
+            }
         }
     }
 
@@ -19,11 +29,14 @@ public abstract class Trigger : MonoBehaviour
         Activator activator = other.GetComponent<Activator>();
         if (activator != null)
         {
-            Activate(activator);
+            if (Deactivate(activator))
+            {
+                Activated = false;
+            }
         }
     }
 
-    protected abstract void Activate(Activator activator);
+    public abstract bool Activate(Activator activator = null);
 
-    protected abstract void Deactivate(Activator activator);
+    public abstract bool Deactivate(Activator activator = null);
 }

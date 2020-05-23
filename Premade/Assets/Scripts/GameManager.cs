@@ -44,11 +44,11 @@ public class GameManager : MonoBehaviour
 
     public void SwitchActiveAnimalController()
     {
-        if (ActiveAnimalController.AnimalType == AnimalType.Fox)
+        if (ActiveAnimalController.AnimalType == AnimalType.Fox && WolfController.isActiveAndEnabled)
         {
             ActiveAnimalController = WolfController;
         }
-        else if (ActiveAnimalController.AnimalType == AnimalType.Wolf)
+        else if (ActiveAnimalController.AnimalType == AnimalType.Wolf && FoxController.isActiveAndEnabled)
         {
             ActiveAnimalController = FoxController;
         }

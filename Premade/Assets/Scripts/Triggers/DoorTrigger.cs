@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DoorTrigger : Trigger
 {
-    protected override void Activate(Activator activator)
+    public override bool Activate(Activator activator)
     {
-        throw new System.NotImplementedException();
+        return false;
     }
 
-    protected override void Deactivate(Activator activator)
+    public override bool Deactivate(Activator activator)
     {
-        throw new System.NotImplementedException();
+        return false;
     }
 }

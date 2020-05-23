@@ -72,19 +72,33 @@ public class InputManager : MonoBehaviour
                 latestInput = Directions.East;
             }
 
+            string[] moveLayerNames;
+            switch (activeAnimalController.AnimalType)
+            {
+                case AnimalType.Fox:
+                    moveLayerNames = new string[] { "MovePath", "MovePathTransparent" };
+                    break;
+                case AnimalType.Wolf:
+                    moveLayerNames = new string[] { "MovePath" };
+                    break;
+                default:
+                    moveLayerNames = new string[] { "MovePath" };
+                    break;
+            }
+
             switch (latestInput)
             {
                 case Directions.North:
-                    activeAnimalController.TryMoveNorth();
+                    activeAnimalController.TryMoveNorth(moveLayerNames);
                     break;
                 case Directions.South:
-                    activeAnimalController.TryMoveSouth();
+                    activeAnimalController.TryMoveSouth(moveLayerNames);
                     break;
                 case Directions.West:
-                    activeAnimalController.TryMoveWest();
+                    activeAnimalController.TryMoveWest(moveLayerNames);
                     break;
                 case Directions.East:
-                    activeAnimalController.TryMoveEast();
+                    activeAnimalController.TryMoveEast(moveLayerNames);
                     break;
                 default:
                     break;

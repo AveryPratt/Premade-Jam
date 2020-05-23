@@ -6,6 +6,7 @@ public class MovementController : MonoBehaviour
 {
     public GameObject Model;
 
+    public bool CanMove { get; set; } = true;
     public bool IsMoving { get; protected set; }
     public float JumpTime = .3f;
 
@@ -15,6 +16,8 @@ public class MovementController : MonoBehaviour
     protected Vector3 MovePoint;
     protected Vector3 StartPoint;
 
+    private bool Died = false;
+
     private void Start()
     {
         MoveTimer = JumpTime;
@@ -22,7 +25,20 @@ public class MovementController : MonoBehaviour
 
     protected void Update()
     {
-        if (IsMoving)
+        if (!CanMove)
+        {
+            if (!Died)
+            {
+                transform.position = MovePoint;
+                Model.transform.position = MovePoint;
+                Model.transform.rotation = Quaternion.Euler(0, MoveAngle, Model.transform.rotation.z);
+                FaceAngle = MoveAngle;
+                MoveTimer = JumpTime;
+                IsMoving = false;
+                Died = true;
+            }
+        }
+        else if (IsMoving)
         {
             MoveTimer -= Time.deltaTime;
             transform.position = Vector3.Lerp(MovePoint, StartPoint, MoveTimer / JumpTime);
@@ -50,46 +66,85 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    public void TryMoveNorth()
+    public void TryMoveNorth(string[] moveLayerNames = null, string[] blockLayerNames = null)
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.forward * 2;
         MoveAngle = 0;
 
-        VerifyMovement();
+        if (moveLayerNames == null)
+        {
+            moveLayerNames = new string[] { "MovePath" };
+        }
+        if (blockLayerNames == null)
+        {
+            blockLayerNames = new string[] { "BlockPath" };
+        }
+
+        VerifyMovement(moveLayerNames, blockLayerNames);
     }
 
-    public void TryMoveSouth()
+    public void TryMoveSouth(string[] moveLayerNames = null, string[] blockLayerNames = null)
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.back * 2;
         MoveAngle = 180;
 
-        VerifyMovement();
+        if (moveLayerNames == null)
+        {
+            moveLayerNames = new string[] { "MovePath" };
+        }
+        if (blockLayerNames == null)
+        {
+            blockLayerNames = new string[] { "BlockPath" };
+        }
+
+        VerifyMovement(moveLayerNames, blockLayerNames);
     }
 
-    public void TryMoveWest()
+    public void TryMoveWest(string[] moveLayerNames = null, string[] blockLayerNames = null)
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.left * 2;
         MoveAngle = 270;
 
-        VerifyMovement();
+        if (moveLayerNames == null)
+        {
+            moveLayerNames = new string[] { "MovePath" };
+        }
+        if (blockLayerNames == null)
+        {
+            blockLayerNames = new string[] { "BlockPath" };
+        }
+
+        VerifyMovement(moveLayerNames, blockLayerNames);
     }
 
-    public void TryMoveEast()
+    public void TryMoveEast(string[] moveLayerNames = null, string[] blockLayerNames = null)
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.right * 2;
         MoveAngle = 90;
 
-        VerifyMovement();
+        if (moveLayerNames == null)
+        {
+            moveLayerNames = new string[] { "MovePath" };
+        }
+        if (blockLayerNames == null)
+        {
+            blockLayerNames = new string[] { "BlockPath" };
+        }
+
+        VerifyMovement(moveLayerNames, blockLayerNames);
     }
 
-    private void VerifyMovement()
+    private void VerifyMovement(string[] moveLayerNames, string[] blockLayerNames)
     {
         Ray ray = new Ray(StartPoint + Vector3.up * .5f, MovePoint - StartPoint);
-        if (Physics.Raycast(ray, 2))
+        bool onPath = Physics.Raycast(ray, 2);
+        if (!CanMove
+            || !Physics.Raycast(ray, 2, LayerMask.GetMask(moveLayerNames))
+            || Physics.Raycast(ray, 2, LayerMask.GetMask(blockLayerNames)))
         {
             MovePoint = StartPoint;
         }

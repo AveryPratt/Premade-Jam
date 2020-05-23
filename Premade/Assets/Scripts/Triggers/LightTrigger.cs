@@ -6,21 +6,26 @@ public class LightTrigger : Trigger
 {
     public GameObject TransparentModel;
 
-    protected override void Activate(Activator activator)
+    public override bool Activate(Activator activator)
     {
-        Debug.Log("activated");
-        if (activator.Type == ActivatorType.Wolf)
+        if (activator != null)
         {
-            TransparentModel.SetActive(true);
+            if (activator.Type == ActivatorType.Wolf)
+            {
+                TransparentModel.SetActive(true);
+                return true;
+            }
+            if (activator.Type == ActivatorType.Fox)
+            {
+                TransparentModel.SetActive(false);
+                return true;
+            }
         }
-        if (activator.Type == ActivatorType.Fox)
-        {
-            TransparentModel.SetActive(false);
-        }
+        return false;
     }
 
-    protected override void Deactivate(Activator activator)
+    public override bool Deactivate(Activator activator)
     {
-
+        return false;
     }
 }

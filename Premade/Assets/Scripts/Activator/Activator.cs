@@ -12,5 +12,6 @@ public abstract class Activator : MonoBehaviour
 public enum ActivatorType
 {
     Fox,
-    Wolf
+    Wolf,
+    Kill
 }
