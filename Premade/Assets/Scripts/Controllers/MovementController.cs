@@ -9,6 +9,8 @@ public class MovementController : MonoBehaviour
     public bool CanMove { get; set; } = true;
     public bool IsMoving { get; protected set; }
     public float JumpTime = .3f;
+    public string[] MoveLayerNames = new string[] { "MovePath" };
+    public string[] BlockLayerNames = new string[] { "BlockPath", "Squishy", "MovePathTransparent" };
 
     protected float MoveTimer;
     protected float FaceAngle;
@@ -66,76 +68,40 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    public void TryMoveNorth(string[] moveLayerNames = null, string[] blockLayerNames = null)
+    public void TryMoveNorth()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.forward * 2;
         MoveAngle = 0;
 
-        if (moveLayerNames == null)
-        {
-            moveLayerNames = new string[] { "MovePath" };
-        }
-        if (blockLayerNames == null)
-        {
-            blockLayerNames = new string[] { "BlockPath" };
-        }
-
-        VerifyMovement(moveLayerNames, blockLayerNames);
+        VerifyMovement(MoveLayerNames, BlockLayerNames);
     }
 
-    public void TryMoveSouth(string[] moveLayerNames = null, string[] blockLayerNames = null)
+    public void TryMoveSouth()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.back * 2;
         MoveAngle = 180;
 
-        if (moveLayerNames == null)
-        {
-            moveLayerNames = new string[] { "MovePath" };
-        }
-        if (blockLayerNames == null)
-        {
-            blockLayerNames = new string[] { "BlockPath" };
-        }
-
-        VerifyMovement(moveLayerNames, blockLayerNames);
+        VerifyMovement(MoveLayerNames, BlockLayerNames);
     }
 
-    public void TryMoveWest(string[] moveLayerNames = null, string[] blockLayerNames = null)
+    public void TryMoveWest()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.left * 2;
         MoveAngle = 270;
 
-        if (moveLayerNames == null)
-        {
-            moveLayerNames = new string[] { "MovePath" };
-        }
-        if (blockLayerNames == null)
-        {
-            blockLayerNames = new string[] { "BlockPath" };
-        }
-
-        VerifyMovement(moveLayerNames, blockLayerNames);
+        VerifyMovement(MoveLayerNames, BlockLayerNames);
     }
 
-    public void TryMoveEast(string[] moveLayerNames = null, string[] blockLayerNames = null)
+    public void TryMoveEast()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.right * 2;
         MoveAngle = 90;
 
-        if (moveLayerNames == null)
-        {
-            moveLayerNames = new string[] { "MovePath" };
-        }
-        if (blockLayerNames == null)
-        {
-            blockLayerNames = new string[] { "BlockPath" };
-        }
-
-        VerifyMovement(moveLayerNames, blockLayerNames);
+        VerifyMovement(MoveLayerNames, BlockLayerNames);
     }
 
     private void VerifyMovement(string[] moveLayerNames, string[] blockLayerNames)

@@ -17,28 +17,31 @@ public class EnemyController : MovementController
 
             if (WaitTimer <= 0)
             {
-                switch (Directions[Idx])
+                if (Directions.Length > 0)
                 {
-                    case global::Directions.North:
-                        TryMoveNorth();
-                        break;
-                    case global::Directions.South:
-                        TryMoveSouth();
-                        break;
-                    case global::Directions.West:
-                        TryMoveWest();
-                        break;
-                    case global::Directions.East:
-                        TryMoveEast();
-                        break;
-                    default:
-                        break;
-                }
+                    switch (Directions[Idx])
+                    {
+                        case global::Directions.North:
+                            TryMoveNorth();
+                            break;
+                        case global::Directions.South:
+                            TryMoveSouth();
+                            break;
+                        case global::Directions.West:
+                            TryMoveWest();
+                            break;
+                        case global::Directions.East:
+                            TryMoveEast();
+                            break;
+                        default:
+                            break;
+                    }
 
-                Idx += 1;
-                if (Idx >= Directions.Length)
-                {
-                    Idx = 0;
+                    Idx += 1;
+                    if (Idx >= Directions.Length)
+                    {
+                        Idx = 0;
+                    }
                 }
 
                 WaitTimer += WaitTime;

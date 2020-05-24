@@ -7,6 +7,7 @@ public class DeathController : MonoBehaviour
     public GameObject Model;
     public Collider Collider;
     public bool FallSideways;
+    public bool EndsGame;
 
     private bool _isDead;
     public bool IsDead
@@ -50,6 +51,10 @@ public class DeathController : MonoBehaviour
 
             if (DeathTimer < 0)
             {
+                if (EndsGame)
+                {
+                    GameManager.Instance.HUD.Die();
+                }
                 DeathTimer = 0;
             }
         }

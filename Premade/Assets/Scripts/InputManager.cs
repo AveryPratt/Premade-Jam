@@ -72,41 +72,33 @@ public class InputManager : MonoBehaviour
                 latestInput = Directions.East;
             }
 
-            string[] moveLayerNames;
-            switch (activeAnimalController.AnimalType)
-            {
-                case AnimalType.Fox:
-                    moveLayerNames = new string[] { "MovePath", "MovePathTransparent" };
-                    break;
-                case AnimalType.Wolf:
-                    moveLayerNames = new string[] { "MovePath" };
-                    break;
-                default:
-                    moveLayerNames = new string[] { "MovePath" };
-                    break;
-            }
-
             switch (latestInput)
             {
                 case Directions.North:
-                    activeAnimalController.TryMoveNorth(moveLayerNames);
+                    activeAnimalController.TryMoveNorth();
                     break;
                 case Directions.South:
-                    activeAnimalController.TryMoveSouth(moveLayerNames);
+                    activeAnimalController.TryMoveSouth();
                     break;
                 case Directions.West:
-                    activeAnimalController.TryMoveWest(moveLayerNames);
+                    activeAnimalController.TryMoveWest();
                     break;
                 case Directions.East:
-                    activeAnimalController.TryMoveEast(moveLayerNames);
+                    activeAnimalController.TryMoveEast();
                     break;
                 default:
                     break;
             }
         }
+
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E))
         {
             GameManager.Instance.SwitchActiveAnimalController();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            GameManager.Instance.HUD.TogglePause();
         }
     }
 }

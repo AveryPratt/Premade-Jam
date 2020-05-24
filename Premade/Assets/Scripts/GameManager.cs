@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public AnimalController WolfController;
     public AnimalController FoxController;
     public InputManager InputManager;
+    public HUD HUD;
     public CameraFollow CameraFollow;
 
     public void SwitchActiveAnimalController()
