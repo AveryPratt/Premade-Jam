@@ -107,6 +107,14 @@ public class InputManager : MonoBehaviour
             {
                 GameManager.Instance.HUD.NextLevel();
             }
+            else if (GameManager.Instance.HUD.GameOverPanel.activeInHierarchy)
+            {
+                GameManager.Instance.HUD.Restart();
+            }
+            else if (GameManager.Instance.HUD.PausePanel.activeInHierarchy)
+            {
+                GameManager.Instance.HUD.TogglePause();
+            }
             else
             {
                 GameManager.Instance.SwitchActiveAnimalController();

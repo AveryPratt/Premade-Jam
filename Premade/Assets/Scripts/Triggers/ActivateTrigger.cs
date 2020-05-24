@@ -6,9 +6,15 @@ public class ActivateTrigger : Trigger
 {
     public GameObject Target;
     public Transform SpawnPoint;
+    public GameObject SecondTarget;
 
     public override bool Activate(Activator activator = null)
     {
+        if (SecondTarget != null)
+        {
+            SecondTarget.SetActive(true);
+        }
+
         if (Target != null)
         {
             Target.SetActive(true);
@@ -34,6 +40,7 @@ public class ActivateTrigger : Trigger
 
             return true;
         }
+
         return false;
     }
 

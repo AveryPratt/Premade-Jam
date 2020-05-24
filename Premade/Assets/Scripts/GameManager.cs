@@ -52,11 +52,11 @@ public class GameManager : MonoBehaviour
 
     public void SwitchActiveAnimalController()
     {
-        if (ActiveAnimalController.AnimalType == AnimalType.Fox && WolfController.isActiveAndEnabled)
+        if (ActiveAnimalController.AnimalType == AnimalType.Fox && WolfController.CanMove)
         {
             ActiveAnimalController = WolfController;
         }
-        else if (ActiveAnimalController.AnimalType == AnimalType.Wolf && FoxController.isActiveAndEnabled)
+        else if (ActiveAnimalController.AnimalType == AnimalType.Wolf && FoxController.CanMove)
         {
             ActiveAnimalController = FoxController;
         }
@@ -66,7 +66,10 @@ public class GameManager : MonoBehaviour
     {
         foreach (LightTrigger light in Lights)
         {
-            light.GoDark();
+            if (!light.StartLit)
+            {
+                light.GoDark();
+            }
         }
     }
 

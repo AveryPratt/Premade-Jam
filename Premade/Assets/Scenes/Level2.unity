@@ -154,6 +154,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3911848500322626148, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
+      propertyPath: SecondTarget
+      value: 
+      objectReference: {fileID: 203654078}
+    - target: {fileID: 6155356991363061381, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7325639152873350773, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -210,8 +218,29 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7918539584194934999, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918539584194934999, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918539584194934999, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918539584194934999, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
+--- !u!1 &203654078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6155356991363061381, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
+  m_PrefabInstance: {fileID: 203654077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &733614464
 PrefabInstance:
   m_ObjectHideFlags: 0

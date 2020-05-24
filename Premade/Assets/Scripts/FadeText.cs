@@ -8,6 +8,7 @@ public class FadeText : MonoBehaviour
     public float StartFadeTime = 3;
     public float EndFadeTime = 6;
 
+
     private float Timer;
 
     private void Update()
