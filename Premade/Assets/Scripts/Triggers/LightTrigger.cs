@@ -5,6 +5,14 @@ using UnityEngine;
 public class LightTrigger : Trigger
 {
     public GameObject TransparentModel;
+    
+    public bool IsLit
+    {
+        get
+        {
+            return TransparentModel.activeInHierarchy;
+        }
+    }
 
     public override bool Activate(Activator activator)
     {

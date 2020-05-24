@@ -68,44 +68,46 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    public void TryMoveNorth()
+    public bool TryMoveNorth()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.forward * 2;
         MoveAngle = 0;
 
-        VerifyMovement(MoveLayerNames, BlockLayerNames);
+        return VerifyMovement(MoveLayerNames, BlockLayerNames);
     }
 
-    public void TryMoveSouth()
+    public bool TryMoveSouth()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.back * 2;
         MoveAngle = 180;
 
-        VerifyMovement(MoveLayerNames, BlockLayerNames);
+        return VerifyMovement(MoveLayerNames, BlockLayerNames);
     }
 
-    public void TryMoveWest()
+    public bool TryMoveWest()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.left * 2;
         MoveAngle = 270;
 
-        VerifyMovement(MoveLayerNames, BlockLayerNames);
+        return VerifyMovement(MoveLayerNames, BlockLayerNames);
     }
 
-    public void TryMoveEast()
+    public bool TryMoveEast()
     {
         StartPoint = transform.position;
         MovePoint = transform.position + Vector3.right * 2;
         MoveAngle = 90;
 
-        VerifyMovement(MoveLayerNames, BlockLayerNames);
+        return VerifyMovement(MoveLayerNames, BlockLayerNames);
     }
 
-    private void VerifyMovement(string[] moveLayerNames, string[] blockLayerNames)
+    private bool VerifyMovement(string[] moveLayerNames, string[] blockLayerNames)
     {
+        bool passed = true;
+
         Ray ray = new Ray(StartPoint + Vector3.up * .5f, MovePoint - StartPoint);
         bool onPath = Physics.Raycast(ray, 2);
         if (!CanMove
@@ -113,8 +115,11 @@ public class MovementController : MonoBehaviour
             || Physics.Raycast(ray, 2, LayerMask.GetMask(blockLayerNames)))
         {
             MovePoint = StartPoint;
+            passed = false;
         }
         IsMoving = true;
+
+        return passed;
     }
 
     private void OnDrawGizmos()

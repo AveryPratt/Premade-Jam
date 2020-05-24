@@ -18,6 +18,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public LightTrigger[] Lights { get; private set; }
+    public Vector4[] OnLights { get; private set; }
+    public int OnLightCount { get; private set; }
+
+    private Vector4 DefaultLight = new Vector4(0, 1000, 0, 0);
+
     private AnimalController _activeAnimalController { get; set; }
     public AnimalController ActiveAnimalController
     {
@@ -58,5 +64,29 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ActiveAnimalController = WolfController;
+
+        Lights = FindObjectsOfType<LightTrigger>();
+        OnLights = new Vector4[100];
+        for (int i = 0; i < 100; i++)
+        {
+            OnLights[i] = DefaultLight;
+        }
+    }
+
+    private void Update()
+    {
+        OnLightCount = 0;
+        foreach (LightTrigger light in Lights)
+        {
+            if (light.IsLit)
+            {
+                OnLights[OnLightCount] = light.transform.position;
+                OnLightCount += 1;
+            }
+        }
+        for (int j = OnLightCount; j < 100; j++)
+        {
+            OnLights[j] = DefaultLight;
+        }
     }
 }

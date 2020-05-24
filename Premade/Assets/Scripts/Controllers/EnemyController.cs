@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MovementController
 {
     public Directions[] Directions;
+    public bool FixedPath;
+
     private int Idx = 0;
     private float WaitTime = .7f;
     private float WaitTimer;
@@ -19,28 +21,33 @@ public class EnemyController : MovementController
             {
                 if (Directions.Length > 0)
                 {
+                    bool moved = false;
+
                     switch (Directions[Idx])
                     {
                         case global::Directions.North:
-                            TryMoveNorth();
+                            moved = TryMoveNorth();
                             break;
                         case global::Directions.South:
-                            TryMoveSouth();
+                            moved = TryMoveSouth();
                             break;
                         case global::Directions.West:
-                            TryMoveWest();
+                            moved = TryMoveWest();
                             break;
                         case global::Directions.East:
-                            TryMoveEast();
+                            moved = TryMoveEast();
                             break;
                         default:
                             break;
                     }
 
-                    Idx += 1;
-                    if (Idx >= Directions.Length)
+                    if (moved || !FixedPath)
                     {
-                        Idx = 0;
+                        Idx += 1;
+                        if (Idx >= Directions.Length)
+                        {
+                            Idx = 0;
+                        }
                     }
                 }
 

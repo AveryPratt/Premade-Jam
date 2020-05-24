@@ -64,5 +64,11 @@ public class ColorSetter : MonoBehaviour
         ForegroundColor = ForegroundColor;
         BackgroundColor = BackgroundColor;
         TransparentClippingLimit = TransparentClippingLimit;
+
+        if (GameManager.Instance.OnLights != null)
+        {
+            Renderer.sharedMaterial.SetVectorArray("_Lights", GameManager.Instance.OnLights);
+            Renderer.sharedMaterial.SetInt("_LightCount", GameManager.Instance.OnLightCount);
+        }
     }
 }

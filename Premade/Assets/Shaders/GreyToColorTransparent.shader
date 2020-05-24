@@ -5,6 +5,7 @@
 		_ForegroundColor("Foreground Color", Color) = (0,0,0,1)
 		_BackgroundColor("Background Color", Color) = (1,1,1,1)
 		_TransparentClippingLimit("TransparentClippingLimit", Float) = 0.9
+		_LightCount("Lights", Int) = 0
         _MainTex("Texture", 2D) = "white" {}
     }
     SubShader
@@ -32,12 +33,14 @@
             struct v2f
             {
                 float2 uv : TEXCOORD0;
+				float4 world_position : WORLD_POSITION;
                 float4 vertex : SV_POSITION;
             };
 
 			float4 _ForegroundColor;
 			float4 _BackgroundColor;
 			float _TransparentClippingLimit;
+			float4 _Lights[100];
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
@@ -45,19 +48,34 @@
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
+				o.world_position = mul(unity_ObjectToWorld, v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+			float4 frag (v2f i) : SV_Target
             {
+
                 // sample the texture
-                fixed4 grey = tex2D(_MainTex, i.uv);
-				fixed grad = (grey.r + grey.g + grey.b) / 3;
+				float4 grey = tex2D(_MainTex, i.uv);
+				float grad = (grey.r + grey.g + grey.b) / 3;
 
 				// lerp color
-				fixed4 col = lerp(_ForegroundColor, _BackgroundColor, grad);
-				if (grad >= _TransparentClippingLimit)
+				float4 col = lerp(_ForegroundColor, _BackgroundColor, grad);
+
+				bool vis = false;
+
+				for (int j = 0; j < 2; j++)
+				{
+					float d = distance(i.world_position, _Lights[j]);
+
+					if (d < 4)
+					{
+						vis = true;
+						break;
+					}
+				}
+				if (grad >= _TransparentClippingLimit || !vis)
 				{
 					col.a = 0;
 				}
