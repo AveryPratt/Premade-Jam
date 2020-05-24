@@ -1527,6 +1527,10 @@ PrefabInstance:
       propertyPath: MoveLayerNames.Array.data[1]
       value: MovePathTransparent
       objectReference: {fileID: 0}
+    - target: {fileID: 3499337634711783451, guid: ca31e0cafa24a054b90aabdb81f08a93, type: 3}
+      propertyPath: BlockLayerNames.Array.data[0]
+      value: BlockPathTransparent
+      objectReference: {fileID: 0}
     - target: {fileID: 5676847580920057611, guid: ca31e0cafa24a054b90aabdb81f08a93, type: 3}
       propertyPath: m_IsActive
       value: 0

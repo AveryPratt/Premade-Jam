@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 3031717214337160156}
   - component: {fileID: 3031717214337160157}
   m_Layer: 0
-  m_Name: Ant
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

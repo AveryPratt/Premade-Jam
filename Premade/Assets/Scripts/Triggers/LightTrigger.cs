@@ -17,6 +17,7 @@ public class LightTrigger : Trigger
     public void GoDark()
     {
         TransparentModel.SetActive(false);
+        Activated = false;
     }
 
     public override bool Activate(Activator activator)

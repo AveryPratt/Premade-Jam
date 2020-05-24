@@ -15,9 +15,15 @@ public class ActivateTrigger : Trigger
             Target.transform.position = SpawnPoint.transform.position;
 
             DeathController deathController = Target.GetComponent<DeathController>();
+            MovementController movementController = Target.GetComponent<MovementController>();
             if (deathController != null)
             {
                 deathController.IsDead = false;
+            }
+            if (movementController != null)
+            {
+                movementController.TryMoveNone();
+                movementController.CanMove = true;
             }
 
             return true;

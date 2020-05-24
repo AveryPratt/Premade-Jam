@@ -310,3 +310,5 @@ C:\Users\aprat\UnityProjects\Premade_Jam\Premade-Jam\Premade\obj\Debug\Assembly-
 C:\Users\aprat\UnityProjects\Premade_Jam\Premade-Jam\Premade\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\aprat\UnityProjects\Premade_Jam\Premade-Jam\Premade\obj\Debug\Assembly-CSharp.dll
 C:\Users\aprat\UnityProjects\Premade_Jam\Premade-Jam\Premade\obj\Debug\Assembly-CSharp.pdb
+C:\Users\aprat\UnityProjects\Premade_Jam\Premade-Jam\Premade\Temp\bin\Debug\UnityEngine.WebGLModule.dll
+C:\Users\aprat\UnityProjects\Premade_Jam\Premade-Jam\Premade\Temp\bin\Debug\UnityEngine.WebGLModule.pdb

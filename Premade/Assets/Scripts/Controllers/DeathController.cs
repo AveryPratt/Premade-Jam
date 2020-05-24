@@ -31,6 +31,7 @@ public class DeathController : MonoBehaviour
             else
             {
                 DeathTimer = DeathTime;
+                Collider.gameObject.SetActive(true);
                 Model.transform.rotation = Quaternion.Euler(0, Model.transform.rotation.eulerAngles.y, 0);
             }
         }
@@ -38,11 +39,6 @@ public class DeathController : MonoBehaviour
     public float DeathTime = 2f;
 
     private float DeathTimer;
-
-    private void OnEnable()
-    {
-        Collider.gameObject.SetActive(true);
-    }
 
     private void Start()
     {
