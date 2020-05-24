@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TransparentModel: {fileID: 1375317045416672136}
+  Collider: {fileID: 1375317045373741813}
 --- !u!1 &1375317045416672136
 GameObject:
   m_ObjectHideFlags: 0
