@@ -5,12 +5,21 @@ using UnityEngine;
 public class LightTrigger : Trigger
 {
     public GameObject TransparentModel;
+    public bool StartLit;
     
     public bool IsLit
     {
         get
         {
             return TransparentModel.activeInHierarchy;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (StartLit)
+        {
+            TransparentModel.SetActive(true);
         }
     }
 

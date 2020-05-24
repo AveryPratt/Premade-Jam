@@ -82,7 +82,7 @@
 				{
 					float d = distance(i.world_position, _Lights[j]);
 
-					if (d < 4)
+					if (d < 4.5)
 					{
 						return col;
 					}

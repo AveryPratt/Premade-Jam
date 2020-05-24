@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436728833932393419, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
       propertyPath: m_Text
-      value: 'Q/E: Switch Characters'
+      value: 'Q/E/Enter: Switch Characters'
       objectReference: {fileID: 0}
     - target: {fileID: 3911848499838606618, guid: 6bfe7bb04b233b44ab85f141fc8f0462, type: 3}
       propertyPath: m_LocalPosition.z
