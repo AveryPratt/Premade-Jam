@@ -78,11 +78,11 @@ Material:
     - _UseTransparentGradient: 0
     - _ZWrite: 1
     m_Colors:
-    - _BackgroundColor: {r: 0.35012951, g: 0, b: 0.49056602, a: 1}
+    - _BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
     - _Black: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ForegroundColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ForegroundColor: {r: 0.55237305, g: 0.14542542, b: 0.7169812, a: 1}
     - _ForgroundColor: {r: 1, g: 0.5254831, b: 0, a: 1}
     - _White: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
