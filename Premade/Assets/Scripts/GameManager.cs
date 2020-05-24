@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -78,6 +79,11 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 100; i++)
         {
             OnLights[i] = DefaultLight;
+        }
+
+        if (Persistent.Instance == null)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 

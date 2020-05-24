@@ -14,6 +14,12 @@ public class ActivateTrigger : Trigger
             Target.SetActive(true);
             Target.transform.position = SpawnPoint.transform.position;
 
+            AnimalController animalController = Target.GetComponent<AnimalController>();
+            if (animalController != null && animalController.AnimalType == AnimalType.Fox)
+            {
+                GameManager.Instance.SwitchActiveAnimalController();
+            }
+
             DeathController deathController = Target.GetComponent<DeathController>();
             MovementController movementController = Target.GetComponent<MovementController>();
             if (deathController != null)

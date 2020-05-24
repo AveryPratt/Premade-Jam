@@ -7,7 +7,7 @@
 		_White("White", Color) = (1, 1, 1, 1)
 		_Black("Black", Color) = (0, 0, 0, 1)
 		_TransparentClippingLimit("TransparentClippingLimit", Float) = 0.9
-		_LightCount("Lights", Int) = 0
+		_LightCount("LightCount", Int) = 0
         _MainTex("Texture", 2D) = "white" {}
     }
     SubShader

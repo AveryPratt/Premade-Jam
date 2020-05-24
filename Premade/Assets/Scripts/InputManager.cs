@@ -100,6 +100,11 @@ public class InputManager : MonoBehaviour
         {
             GameManager.Instance.HUD.TogglePause();
         }
+
+        if (Input.GetKeyDown(KeyCode.Return) && GameManager.Instance.HUD.WinPanel.activeInHierarchy)
+        {
+            GameManager.Instance.HUD.NextLevel();
+        }
     }
 }
 

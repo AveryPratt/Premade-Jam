@@ -5,7 +5,7 @@
 		_ForegroundColor("Foreground Color", Color) = (0,0,0,1)
 		_BackgroundColor("Background Color", Color) = (1,1,1,1)
 		_TransparentClippingLimit("TransparentClippingLimit", Float) = 0.9
-		_LightCount("Lights", Int) = 0
+		_LightCount("LightCount", Int) = 0
         _MainTex("Texture", 2D) = "white" {}
     }
     SubShader
@@ -41,6 +41,7 @@
 			float4 _BackgroundColor;
 			float _TransparentClippingLimit;
 			float4 _Lights[100];
+			int _LightCount;
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
@@ -65,7 +66,7 @@
 
 				bool vis = false;
 
-				for (int j = 0; j < 2; j++)
+				for (int j = 0; j < _LightCount; j++)
 				{
 					float d = distance(i.world_position, _Lights[j]);
 

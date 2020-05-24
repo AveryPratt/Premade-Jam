@@ -16,7 +16,7 @@ public class DarkActivator : Activator
         bool inLight = false;
         foreach (LightTrigger light in GameManager.Instance.Lights)
         {
-            if (light.IsLit && Vector3.SqrMagnitude(light.transform.position - transform.position) < 16)
+            if (light.IsLit && Vector3.SqrMagnitude(light.transform.position - transform.position) < 25)
             {
                 inLight = true;
                 break;

@@ -26,6 +26,7 @@ public class DeathController : MonoBehaviour
                 if (GoesDark)
                 {
                     GameManager.Instance.KillLights();
+                    GameManager.Instance.SwitchActiveAnimalController();
                 }
             }
             else

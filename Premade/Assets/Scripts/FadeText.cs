@@ -13,12 +13,6 @@ public class FadeText : MonoBehaviour
     private void Update()
     {
         Timer += Time.deltaTime;
-        if (Timer > StartFadeTime)
-        {
-            if (Timer < EndFadeTime)
-            {
-                CanvasGroup.alpha = Mathf.Lerp(1, 0, (Timer - StartFadeTime) / (EndFadeTime - StartFadeTime));
-            }
-        }
+        CanvasGroup.alpha = Time.timeScale == 0 ? 1 : Mathf.Lerp(1, 0, (Timer - StartFadeTime) / (EndFadeTime - StartFadeTime));
     }
 }
