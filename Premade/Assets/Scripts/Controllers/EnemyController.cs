@@ -25,6 +25,9 @@ public class EnemyController : MovementController
 
                     switch (Directions[Idx])
                     {
+                        case global::Directions.None:
+                            moved = TryMoveNone();
+                            break;
                         case global::Directions.North:
                             moved = TryMoveNorth();
                             break;
@@ -49,6 +52,10 @@ public class EnemyController : MovementController
                             Idx = 0;
                         }
                     }
+                }
+                else
+                {
+                    TryMoveNone();
                 }
 
                 WaitTimer += WaitTime;

@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class FoxActivator : Activator
 {
-
+    private void Start()
+    {
+        Type = ActivatorType.Fox;
+    }
 }

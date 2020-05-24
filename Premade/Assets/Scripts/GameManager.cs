@@ -61,6 +61,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void KillLights()
+    {
+        foreach (LightTrigger light in Lights)
+        {
+            light.GoDark();
+        }
+    }
+
     private void Start()
     {
         ActiveAnimalController = WolfController;

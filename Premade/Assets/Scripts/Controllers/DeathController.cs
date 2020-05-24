@@ -8,6 +8,7 @@ public class DeathController : MonoBehaviour
     public Collider Collider;
     public bool FallSideways;
     public bool EndsGame;
+    public bool GoesDark;
 
     private bool _isDead;
     public bool IsDead
@@ -22,12 +23,26 @@ public class DeathController : MonoBehaviour
             if (_isDead)
             {
                 Collider.gameObject.SetActive(false);
+                if (GoesDark)
+                {
+                    GameManager.Instance.KillLights();
+                }
+            }
+            else
+            {
+                DeathTimer = DeathTime;
+                Model.transform.rotation = Quaternion.Euler(0, Model.transform.rotation.eulerAngles.y, 0);
             }
         }
     }
     public float DeathTime = 2f;
 
     private float DeathTimer;
+
+    private void OnEnable()
+    {
+        Collider.gameObject.SetActive(true);
+    }
 
     private void Start()
     {

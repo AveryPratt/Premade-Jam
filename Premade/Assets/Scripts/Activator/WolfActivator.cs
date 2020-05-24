@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class WolfActivator : Activator
 {
-
+    private void Start()
+    {
+        Type = ActivatorType.Wolf;
+    }
 }

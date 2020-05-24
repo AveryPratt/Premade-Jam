@@ -291,7 +291,8 @@ MonoBehaviour:
   - BlockPath
   - Squishy
   - MovePathTransparent
-  Directions: 00000000
+  Directions: 
+  FixedPath: 0
 --- !u!114 &8887046908455418480
 MonoBehaviour:
   m_ObjectHideFlags: 0

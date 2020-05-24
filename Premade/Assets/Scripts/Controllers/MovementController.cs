@@ -68,6 +68,14 @@ public class MovementController : MonoBehaviour
         }
     }
 
+    public bool TryMoveNone()
+    {
+        StartPoint = transform.position;
+        MovePoint = transform.position;
+
+        return VerifyMovement(MoveLayerNames, BlockLayerNames);
+    }
+
     public bool TryMoveNorth()
     {
         StartPoint = transform.position;

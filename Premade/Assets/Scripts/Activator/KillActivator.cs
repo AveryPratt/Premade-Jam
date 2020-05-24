@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class KillActivator : Activator
 {
-
+    private void Start()
+    {
+        Type = ActivatorType.Kill;
+    }
 }

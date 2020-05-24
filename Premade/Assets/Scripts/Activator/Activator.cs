@@ -6,12 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class Activator : MonoBehaviour
 {
-    public ActivatorType Type;
+    public ActivatorType Type { get; protected set; }
 }
 
 public enum ActivatorType
 {
     Fox,
     Wolf,
-    Kill
+    Kill,
+    Light,
+    Dark
 }

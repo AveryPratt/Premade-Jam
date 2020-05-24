@@ -274,7 +274,8 @@ MonoBehaviour:
   - BlockPath
   - Enemy
   - MovePathTransparent
-  Directions: 01000000
+  Directions: 
+  FixedPath: 0
 --- !u!114 &6141249336782568762
 MonoBehaviour:
   m_ObjectHideFlags: 0

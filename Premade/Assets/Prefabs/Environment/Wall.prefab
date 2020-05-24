@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3031717212898601667}
-  - component: {fileID: 3031717212898601664}
-  - component: {fileID: 3031717212898601665}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -34,42 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3031717212898601664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3031717212898601678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9eb2109c408bcc4cb4ae9cf203f4f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Model: {fileID: 3031717213631756016}
-  JumpTime: 0.3
-  MoveLayerNames:
-  - MovePath
-  BlockLayerNames:
-  - BlockPath
-  - Squishy
-  Directions: 
---- !u!114 &3031717212898601665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3031717212898601678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872618477e6137142897b8117acb2a19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Model: {fileID: 3031717213631756016}
-  Collider: {fileID: 3031717213085265007}
-  FallSideways: 1
-  DeathTime: 2
 --- !u!1 &3031717213085265004
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,8 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0743edf3aeec3b4ca456af2d6b57cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementController: {fileID: 3031717212898601664}
-  DeathController: {fileID: 3031717212898601665}
+  MovementController: {fileID: 0}
+  DeathController: {fileID: 0}
 --- !u!1 &3031717213631756016
 GameObject:
   m_ObjectHideFlags: 0

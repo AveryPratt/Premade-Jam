@@ -14,18 +14,18 @@ public class LightTrigger : Trigger
         }
     }
 
+    public void GoDark()
+    {
+        TransparentModel.SetActive(false);
+    }
+
     public override bool Activate(Activator activator)
     {
         if (activator != null)
         {
-            if (activator.Type == ActivatorType.Wolf)
+            if (activator.Type == ActivatorType.Wolf || activator.Type == ActivatorType.Fox)
             {
                 TransparentModel.SetActive(true);
-                return true;
-            }
-            if (activator.Type == ActivatorType.Fox)
-            {
-                TransparentModel.SetActive(false);
                 return true;
             }
         }
